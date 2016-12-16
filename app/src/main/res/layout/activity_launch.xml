@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_launch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.ynagy.mobileplayer.com.example.Activity.LaunchActivity">
+
+    <ImageView
+        android:id="@+id/iv_launch_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerInParent="true"
+        />
+    <LinearLayout
+        android:layout_below="@+id/iv_launch_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        >
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+        <TextView
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="欢迎使用..."
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+</RelativeLayout>
