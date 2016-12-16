@@ -1,6 +1,7 @@
 package com.example.mobileplayer.pager;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -12,9 +13,13 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,7 +28,9 @@ import com.example.mobileplayer.Base.BasePager;
 import com.example.mobileplayer.domain.MediaItem;
 import com.example.ynagy.mobileplayer.R;
 
+import java.text.Format;
 import java.util.ArrayList;
+
 import java.util.jar.Manifest;
 
 /**
@@ -35,6 +42,7 @@ public class VideoPager extends BasePager {
     private ListView listView;
     private ProgressBar pb_loading;
     private TextView tv_nomedia;
+    private VideoPagerAdapter videoPagerAdapter;
 //装数据集合
     private ArrayList<MediaItem> mediaItems;
 
@@ -42,27 +50,23 @@ public class VideoPager extends BasePager {
         super(context);
     }
 
-//    private static boolean isGrantExternal(Activity activity){
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M&&activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_DENIED){
-//            activity.requestPermissions(new String[]){
-//
-//                Manifest.
-//            };
-//        }
-//        return false;
-//    }
     private Handler handler = new Handler(){
         public void handleMessage(Message msg){
             super.handleMessage(msg);
             if (mediaItems != null &&mediaItems.size()>0){
                 //有数据
                 //设置适配器
+                videoPagerAdapter = new VideoPagerAdapter();
+                listView.setAdapter(videoPagerAdapter);
                 //文本隐藏
+                tv_nomedia.setVisibility(View.GONE);
             }else {
                 //没有数据
                 //文本显示
+                tv_nomedia.setVisibility(View.VISIBLE);
             }
                 //把文本和Praogress隐藏
+            pb_loading.setVisibility(View.GONE);
         }
     };
 
@@ -139,5 +143,52 @@ public class VideoPager extends BasePager {
         }.start();
     }
 
+    class VideoPagerAdapter extends BaseAdapter{
 
+        @Override
+        public int getCount() {
+            return mediaItems.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ViewHoder viewHoder;
+            if (view == null){
+                view = View.inflate(context,R.layout.item_video_pager,null);
+                viewHoder = new ViewHoder();
+                viewHoder.iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
+                viewHoder.tv_time = (TextView) view.findViewById(R.id.tv_time);
+                viewHoder.tv_name = (TextView) view.findViewById(R.id.tv_name);
+                viewHoder.tv_size = (TextView) view.findViewById(R.id.tv_size);
+                view.setTag(viewHoder);
+            }else {
+                viewHoder = (ViewHoder) view.getTag();
+            }
+
+            //得到数据
+            MediaItem mediaItem = mediaItems.get(i);
+            viewHoder.tv_name.setText(mediaItem.getName());
+
+            viewHoder.tv_size.setText(Formatter.formatFileSize(context,mediaItem.getSize()));
+//            viewHoder.tv_time.setText((int) mediaItem.getDuration());
+            return view;
+        }
+    }
+    static class ViewHoder{
+        ImageView iv_icon;
+        TextView tv_name;
+        TextView tv_time;
+        TextView tv_size;
+
+    }
 }
