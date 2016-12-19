@@ -1,37 +1,28 @@
 package com.example.mobileplayer.pager;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.text.format.Formatter;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.mobileplayer.Activity.SystemVideoPlayer;
 import com.example.mobileplayer.Base.BasePager;
+import com.example.mobileplayer.adapter.VideoPagerAdapter;
 import com.example.mobileplayer.domain.MediaItem;
 import com.example.ynagy.mobileplayer.R;
 
-import java.text.Format;
 import java.util.ArrayList;
 
-import java.util.jar.Manifest;
 
 /**
  * Created by YnagY on 2016/12/6.
@@ -56,7 +47,7 @@ public class VideoPager extends BasePager {
             if (mediaItems != null &&mediaItems.size()>0){
                 //有数据
                 //设置适配器
-                videoPagerAdapter = new VideoPagerAdapter();
+                videoPagerAdapter = new VideoPagerAdapter(context,mediaItems);
                 listView.setAdapter(videoPagerAdapter);
                 //文本隐藏
                 tv_nomedia.setVisibility(View.GONE);
@@ -73,15 +64,29 @@ public class VideoPager extends BasePager {
     @Override
     public View initView() {
         View view = View.inflate(context, R.layout.video_pager,null);
-
         listView = (ListView) view.findViewById(R.id.listView);
-
         pb_loading = (ProgressBar) view.findViewById(R.id.pb_loading);
-
         tv_nomedia = (TextView) view.findViewById(R.id.tv_nomedia);
-
+        //设置item的点击事件
+        listView.setOnItemClickListener(new MyOnItemClickListener());
         return view;
     }
+    private class MyOnItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            MediaItem mediaItem = mediaItems.get(i);
+            //调用系统的播放器
+//            Intent intent = new Intent();
+//            intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+//            context.startActivity(intent);
+            //自定义播放器
+            Intent intent = new Intent(context,SystemVideoPlayer.class);
+            intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+            context.startActivity(intent);
+
+        }
+    }
+
 
     @Override
     public void initData() {
@@ -117,8 +122,6 @@ public class VideoPager extends BasePager {
 
                         MediaItem mediaItem = new MediaItem();
 
-                        mediaItems.add(mediaItem);
-
                         String name = cursor.getString(0);//视频文件在sd卡中的名字
                         mediaItem.setName(name);
 
@@ -126,13 +129,15 @@ public class VideoPager extends BasePager {
                         mediaItem.setDuration(duration);
 
                         long size = cursor.getLong(2);//大小
-                        mediaItem.setDuration(size);
+                        mediaItem.setSize(size);
 
                         String data = cursor.getString(3);//视频的绝对地址
                         mediaItem.setData(data);
 
                         String artist = cursor.getString(4);//音乐的作者
                         mediaItem.setArtist(artist);
+
+                        mediaItems.add(mediaItem);
                     }
 
                     cursor.close();
@@ -141,54 +146,5 @@ public class VideoPager extends BasePager {
                 handler.sendEmptyMessage(0);
             }
         }.start();
-    }
-
-    class VideoPagerAdapter extends BaseAdapter{
-
-        @Override
-        public int getCount() {
-            return mediaItems.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            ViewHoder viewHoder;
-            if (view == null){
-                view = View.inflate(context,R.layout.item_video_pager,null);
-                viewHoder = new ViewHoder();
-                viewHoder.iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
-                viewHoder.tv_time = (TextView) view.findViewById(R.id.tv_time);
-                viewHoder.tv_name = (TextView) view.findViewById(R.id.tv_name);
-                viewHoder.tv_size = (TextView) view.findViewById(R.id.tv_size);
-                view.setTag(viewHoder);
-            }else {
-                viewHoder = (ViewHoder) view.getTag();
-            }
-
-            //得到数据
-            MediaItem mediaItem = mediaItems.get(i);
-            viewHoder.tv_name.setText(mediaItem.getName());
-
-            viewHoder.tv_size.setText(Formatter.formatFileSize(context,mediaItem.getSize()));
-//            viewHoder.tv_time.setText((int) mediaItem.getDuration());
-            return view;
-        }
-    }
-    static class ViewHoder{
-        ImageView iv_icon;
-        TextView tv_name;
-        TextView tv_time;
-        TextView tv_size;
-
     }
 }

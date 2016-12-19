@@ -17,7 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.mobileplayer.Activity.MainActivity" android:launchMode="singleTask"/>
+        <activity android:name="com.example.mobileplayer.Activity.MainActivity"
+            android:launchMode="singleTask"
+            android:configChanges="keyboardHidden|screenSize|orientation"/>
+        <activity android:name="com.example.mobileplayer.Activity.SystemVideoPlayer"
+            android:configChanges="keyboardHidden|screenSize|orientation"/>
     </application>
 
 </manifest>

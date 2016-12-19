@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_5e6ccc2635688725d27c4779bdc931c30e322abb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -25,35 +34,8 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="bfe60fd8fe37294ce661d52936a7ab139cb467d6">
+        sha1="240441936abd80fbb665e0381532b79220054a42">
         <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_db1b7308e71cef0fa8e549862760e03422670fed/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.0"
-        sha1="0a6b41b3cab12ed084ca6fcbc9944ae297291e44">
-        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_cbd7826ac3b523cc2d5406393ccac7953d499ab8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/wujg/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.0"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_9551f5551445bccfd65d502a99a49a31630ee17e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.0"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_5e6ccc2635688725d27c4779bdc931c30e322abb/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -66,12 +48,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="99ccc1313feb88a1fe250301232656f4e58045e6">
+        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_cbd7826ac3b523cc2d5406393ccac7953d499ab8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
         sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
         <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_c379df43b6769a5d0ac16e1997dec3e55be13725/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/wujg/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_9551f5551445bccfd65d502a99a49a31630ee17e/classes.dex" />
     </item>
 
 </items>
