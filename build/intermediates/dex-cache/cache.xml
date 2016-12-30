@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="f7a8707ee479e0a6810009a1da30e343f5242f2c">
+        sha1="aa7431910e7bdb7dcd175e399dd38547893d2038">
         <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_db1b7308e71cef0fa8e549862760e03422670fed/classes.dex" />
     </item>
     <item
@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="fddf4837e102615894fbac4c2cb4addaf68d4f7a">
+        sha1="b1d737015af1137b752f3c5cd12f5b1c2bea3775">
         <dex dex="/Users/wujg/Desktop/MoblePlayer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_cbd7826ac3b523cc2d5406393ccac7953d499ab8/classes.dex" />
     </item>
     <item
